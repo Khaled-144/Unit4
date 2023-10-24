@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Unit4.Models.orderdetail>
+@{
+    ViewData["Title"] = "orderdetail";
+}
+<h2>orderdetail</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th> Order Id </th>
+            <th>Customer Name </th>
+            <th>Book Name </th>
+            <th>Book Bought Quantity</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>  @Html.DisplayFor(modelItem => item.Id) </td>
+                <td>  @Html.DisplayFor(modelItem => item.customer) </td>
+                <td>  @Html.DisplayFor(modelItem => item.booktitle) </td>
+                <td>  @Html.DisplayFor(modelItem => item.quantity)  </td>
+                <td>
+                    <a asp-controller="orders" asp-action="Edit" asp-route-id="@item.Id">Edit  |</a> <a asp-controller="orders" asp-action=" Delete" asp-route-id="@item.Id">Delete   |</a>
+                    <a asp-controller="orders" asp-action="Details" asp-route-id="@item.Id">Order Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
