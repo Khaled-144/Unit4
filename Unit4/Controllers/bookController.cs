@@ -8,7 +8,7 @@ namespace Unit4.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class bookController : ControllerBase
+    public class bookController : ControllerBase //Name on dr.aiman: "apibookController"
     {
         // getting all book search catagory
         [HttpGet("{cat}")]

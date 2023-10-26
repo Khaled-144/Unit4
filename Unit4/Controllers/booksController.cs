@@ -28,6 +28,13 @@ namespace Unit4.Controllers
                           Problem("Entity set 'Unit4Context.book'  is null.");
         }
 
+        public async Task<IActionResult> Catelog()
+        {
+            return _context.book != null ?
+                        View(await _context.book.ToListAsync()) :
+                        Problem("Entity set 'Unit4Context.book'  is null.");
+        }
+
         // GET: books/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -165,7 +172,7 @@ namespace Unit4.Controllers
         [HttpPost]
         public async Task<IActionResult> search(string s)
         {
-            var brBook = await _context.book.FromSqlRaw("select * from book where info LIKE '%" + s + "%' ").ToListAsync();
+            var brBook = await _context.book.FromSqlRaw("select * from book where title LIKE '%" + s + "%' ").ToListAsync();
             return View(brBook);
         }
 
@@ -201,8 +208,8 @@ namespace Unit4.Controllers
 
         public async Task<IActionResult> orderdetails()
         {
-            var orItems = await _context.orderdetail.FromSqlRaw("select orders.Id as id, name as customer, title as booktitle, orders.quantity as quantity from book, orders, usersaccounts  where book.id = orders.bookid and orders.custid = usersaccounts.id  ").ToListAsync();
-            return View(orItems);
+            var orBooks = await _context.orderdetail.FromSqlRaw("select orders.Id as id, name as customer, title as booktitle, orders.quantity as quantity from book, orders, usersaccounts  where book.id = orders.bookid and orders.custid = usersaccounts.id  ").ToListAsync();
+            return View(orBooks);
         }
 
 

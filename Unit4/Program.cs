@@ -7,6 +7,7 @@ builder.Services.AddDbContext<Unit4Context>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSession(options => { options.IdleTimeout = TimeSpan.FromMinutes(1); });
 
 var app = builder.Build();
 
@@ -18,11 +19,12 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
 
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Login}");
 
 app.Run();

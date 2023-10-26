@@ -16,9 +16,11 @@ namespace Unit4.Data
 
         public DbSet<Unit4.Models.items> items { get; set; } = default!;
 
-        public DbSet<Unit4.Models.book>? book { get; set; }
+        public DbSet<Unit4.Models.book> book { get; set; }
 
-        public DbSet<Unit4.Models.orderdetail>? orderdetail { get; set; }
+        public DbSet<Unit4.Models.orderdetail> orderdetail { get; set; }
+
+        public DbSet<Unit4.Models.orders> orders { get; set; }
 
     }
 }

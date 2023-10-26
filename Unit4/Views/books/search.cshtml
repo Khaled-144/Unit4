@@ -13,9 +13,11 @@
     </div>
     <input type="submit" value="Search" class="btn btn-default" />
 </form>
-<br /> <p><a asp-action="index">Home</a></p>
-<table class="table animate_animated animate_fadeInDownBig">
+<br /> 
+<p><a asp-action="index">Back to books</a></p>
 
+<table class="table animate_animated animate_fadeInDownBig">
+    <thead>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.title)
@@ -41,10 +43,12 @@
         <th>
             @Html.DisplayNameFor(model => model.imgfile)
         </th>
-
-        <th></th>
+        <th>
+            Actions
+        </th>
     </tr>
     </thead>
+
     <tbody>
         @foreach (var item in Model)
         {
@@ -71,23 +75,15 @@
                     @Html.DisplayFor(modelItem => item.bookquantity)
                 </td>
                 <td>
+                    <img src="~/images/@item.imgfile" height="150"/>
                     @Html.DisplayFor(modelItem => item.imgfile)
                 </td>
-
 
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
-                <dt>
-                    Pic
-                </dt>
-                <dd>
-                    <img src="~/images/@item.imgfile" height="150" />
-                    <br />@item.imgfile
-
-                </dd>
             </tr>
         }
     </tbody>
